@@ -326,6 +326,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332599545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7153522919206459675, guid: 9886ed860b005a648a572b69af3624e8, type: 3}
+  m_PrefabInstance: {fileID: 7153522919320859846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!850595691 &351319467
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -692,6 +703,9 @@ GameObject:
   - component: {fileID: 1117741042}
   - component: {fileID: 1117741041}
   - component: {fileID: 1117741039}
+  - component: {fileID: 1117741043}
+  - component: {fileID: 1117741040}
+  - component: {fileID: 1117741044}
   m_Layer: 5
   m_Name: TextTutorial
   m_TagString: Untagged
@@ -731,28 +745,147 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620971f18c7066b4ca0ea7f135a91434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TutorialText:
-  - "Hi Levine museum! Here is a little proof of concept demo we here at \u2018Potions
-    and Pixels\u2019 have whipped up for the Brooklyn AR project. "
-  - The current state of the art of AR on an average mobile phone, means that some
-    things work very well, whereas other things don't.
-  - One issue most phones have is that they don't know which way they are pointing
-    in terms of north, south, east, west. You may have noticed that the compass on
-    your phone is often way off.
-  - In order to fit the historical images on top of the modern day sites in AR, we
-    need the phone to know which way it is facing in terms of north, south, east,
-    west.
-  - Our solution to this problem is to add a calibration step, where the user points
-    their phone in a known direction and hits the calibrate button. Now the phone
-    will have an accurate baseline to work from.
-  - This proof of concept demo app shows this calibration step in action.
-  - Point your phone in any direction and press the calibrate button.
-  - "We\u2019ve created a billboard in AR several meters from you in that direction.
-    Look around with your phone, the billboard will remain in its calibrated position."
-  - You can press the calibrate button again to reposition the billboard to your
-    current orientation.
-  SceneLoaderButton: {fileID: 1721386060}
-  SceneToLoad: SampleCrosshairScene
+  Steps:
+  - Text: "Hi Levine museum! Here is a little proof of concept demo we here at \u2018Potions
+      and Pixels\u2019 have whipped up for the Brooklyn AR project. "
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls: []
+  - Text: The current state of the art of AR on an average mobile phone, means that
+      some things work very well, whereas other things don't.
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls: []
+  - Text: One issue most phones have is that they don't know which way they are pointing
+      in terms of north, south, east, west. You may have noticed that the compass
+      on your phone is often way off.
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls: []
+  - Text: In order to fit the historical images on top of the modern day sites in
+      AR, we need the phone to know which way it is facing in terms of north, south,
+      east, west.
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls: []
+  - Text: Our solution to this problem is to add a calibration step, where the user
+      points their phone in a known direction and hits the calibrate button. Now
+      the phone will have an accurate baseline to work from.
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls: []
+  - Text: This proof of concept demo app shows this calibration step in action.
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls: []
+  - Text: Point your phone in any direction and press the calibrate button.
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1117741040}
+          m_TargetAssemblyTypeName: TutorialEvents, Assembly-CSharp
+          m_MethodName: SetButtonText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Calibrate
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Text: "We\u2019ve created a billboard in AR several meters from you in that direction.
+      Look around with your phone, the billboard will remain in its calibrated position."
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1117741040}
+          m_TargetAssemblyTypeName: TutorialEvents, Assembly-CSharp
+          m_MethodName: SetButtonText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Ok
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1117741043}
+          m_TargetAssemblyTypeName: CrosshairSceneLoader, Assembly-CSharp
+          m_MethodName: LoadCHSceneAdditiveAsync
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: SampleCrosshairScene
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Text: You can press the calibrate button again to reposition the billboard to
+      your current orientation.
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls: []
+  - Text: la fin
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1117741040}
+          m_TargetAssemblyTypeName: TutorialEvents, Assembly-CSharp
+          m_MethodName: SetButtonText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Calibrate
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1117741040}
+          m_TargetAssemblyTypeName: TutorialEvents, Assembly-CSharp
+          m_MethodName: HideUIElement
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1117741044}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Text: la fin part 2
+    OnBeginStep:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1117741043}
+          m_TargetAssemblyTypeName: CrosshairSceneLoader, Assembly-CSharp
+          m_MethodName: LoadCHSceneAdditiveAsync
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: SampleCrosshairScene
+            m_BoolArgument: 0
+          m_CallState: 2
+  Button: {fileID: 332599545}
+  currentStep: 0
+--- !u!114 &1117741040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117741037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28791ee3a3c7af34f8adc2e7809b879b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1117741041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -791,17 +924,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117741037}
   m_CullTransparentMesh: 0
---- !u!114 &1721386060 stripped
+--- !u!114 &1117741043
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7153522919206459686, guid: 9886ed860b005a648a572b69af3624e8, type: 3}
-  m_PrefabInstance: {fileID: 7153522919320859846}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1117741037}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9b4585f1e6c4164d9c713b7aef84a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UserHeight: 0
+--- !u!225 &1117741044
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117741037}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1845541184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,5 +1162,6 @@ PrefabInstance:
       propertyPath: m_FontData.m_MaxSize
       value: 300
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7153522919206459686, guid: 9886ed860b005a648a572b69af3624e8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9886ed860b005a648a572b69af3624e8, type: 3}

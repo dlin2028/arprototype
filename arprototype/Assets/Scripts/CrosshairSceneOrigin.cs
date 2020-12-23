@@ -27,6 +27,6 @@ public class CrosshairSceneOrigin : MonoBehaviour
         }
 
         transform.position = Camera.main.transform.position;
-        transform.rotation = Camera.main.transform.rotation;
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Camera.main.transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
     }
 }

@@ -7,14 +7,26 @@ public class CrosshairSceneOrigin : MonoBehaviour
 {
     public GameObject Crosshair;
 
-    public void RotateScene()
+    public void RotateScene(float userHeight)
     {
+        if(transform.position.y != 0)
+        {
+            Debug.Log("Y position is not set to 0. This will be overwritten");
+        }
+        if(!Crosshair)
+        {
+            Debug.LogError("Crosshair was null, please set it to a valid gameobject");
+        }
+        
+        transform.position = new Vector3(transform.position.x, userHeight, transform.position.z);
         transform.LookAt(Crosshair.transform.position);
         foreach (var go in gameObject.scene.GetRootGameObjects())
         {
-            go.transform.parent = transform;
+            if(go != gameObject)
+                go.transform.parent = transform;
         }
 
+        transform.position = Camera.main.transform.position;
         transform.rotation = Camera.main.transform.rotation;
     }
 }
